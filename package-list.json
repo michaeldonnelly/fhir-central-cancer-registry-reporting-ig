@@ -1,0 +1,18 @@
+{
+ "package-id" : "hl7.fhir.us.central-cancer-registry-reporting",
+ "title" : "Making EHR Data MOre available for Research and Public Health (MedMorph) Central Cancer Registry Reporting Content IG", 
+ "canonical" : "http://hl7.org/fhir/us/central-cancer-registry-reporting", 
+ "introduction" : "The MedMorph Central Cancer Registry Reporting Content IG provides healthcare organizations the necessary data exchange mechanisms to report cancer data to public health agencies.",
+ "category" : "Public Health and Research",
+ "list" : [
+ {
+  "version" : "current",
+  "desc" : "Continuous Integration Build (latest in version control)",
+  "path" : "http://build.fhir.org/ig/HL7/fhir-central-cancer-registry-reporting",
+  "status" : "ci-build",
+  "current" : "true",
+  "sequence" : "STU 1",
+  "fhirversion" : "4.1.0"
+ }
+ ]
+}
