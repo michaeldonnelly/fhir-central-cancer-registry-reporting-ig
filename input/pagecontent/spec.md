@@ -30,50 +30,194 @@ Actors and Systems asserting conformance to this implementation guide have to im
 * When accessing MedMorph Research Content IG data, Systems SHALL interpret missing data elements within resource instances returned from API requests as data not present.
 
 
-#### Profiles
+#### Profiles and Other IGs Usage
 This specification makes significant use of [FHIR profiles]({{site.data.fhir.path}}profiling.html), search parameter definitions, and terminology artifacts to describe the content to be shared as part of MedMorph Central Cancer Registry Reporting Content IG workflows. The implementation guide is based on [FHIR R4]({{site.data.fhir.path}}) and profiles are listed for each interaction.
 
 The full set of profiles defined in this implementation guide can be found by following the links on the MedMorph [FHIR Artifacts](artifacts.html) page.
 
 
-#### US Core Usage
+##### MedMorph Reference Architecture (RA) IG Usage
 
-This IG leverages the [US Core](http://hl7.org/fhir/us/core) set of profiles defined by HL7 for sharing non-veterinary EMR individual health data in the U.S.  Where US Core profiles exist, this IG either leverages them directly or uses them as a base for any additional constraints needed to support the research use cases.  If no constraints are needed, this IG does not define any profiles.
+This IG leverages the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/index.html) defined by HL7 Infrastructure Public Health WG as the reference architecture for automation and implementing the health care surveys use case.
 
-Where US Core profiles do not yet exist (e.g., for PlanDefinition, Bundle), US Public Health profiles and MedMorph Reference Architecture IG profiles will be used. 
+##### US Core Usage
+
+This IG leverages the [US Core]({{ site.data.fhir.ver.uscoreR4 }}) set of profiles defined by HL7 for sharing non-veterinary EMR individual health data in the U.S.  Where US Core profiles exist, this IG either leverages them directly or uses them as a base for any additional constraints needed to support the research use cases.  If no constraints are needed, this IG does not define any profiles.
 
 
-#### SMART on FHIR Backend Services Authorization Requirements
 
-This section outlines how the SMART on FHIR Backend Services Authorization will be used by the MedMorph Central Cancer Registry Reporting Content  implementation guide. 
+##### US Public Health (US PH) library profiles Usage
 
-* The following actors comprise the System Actors: EHRs, Backend Service App and the Central Cancer Registries. 
+This IG leverages the [US PH library profiles](https://github.com/HL7/fhir-us-ph-common-library-ig) defined by HL7 Public Health WG for sharing public health reporting data. 
 
-* System Actors (EHRs, Backend Service App, Central Cancer Registries) SHALL advertise conformance to SMART Backend Services by hosting a Well-Known Uniform Resource Identifiers (URIs) as defined in the [Bulk Data Access IG](http://hl7.org/fhir/uv/bulkdata/export/index.html) specification.
+##### mCode FHIR IG Usage
 
-* System Actors SHALL include token_endpoint, scopes_supported, token_endpoint_auth_methods_supported and token_endpoint_auth_signing_alg_values_supported as defined in the [Bulk Data Access IG](http://hl7.org/fhir/uv/bulkdata/export/index.html) specification.
+This IG leverages the [mCode FHIR IG]({{site.data.fhir.ver.mcodeIg}}/index.html) for exchanging cancer specific information which includes the following 
 
-* When System Actors act as clients, they SHALL share their JSON Web Key Set (JWKS) with the server System Actors using Uniform Resource Locators (URLs) as defined in the [Bulk Data Access IG](http://hl7.org/fhir/uv/bulkdata/export/index.html) specification.
+	* Primary Cancer Condition
+	* Secondary Cancer Condition
+	* Cancer Stage Group Information 
+	* Cancer Related MedicationRequests 
+	* Cancer Related MedicationAdministration
+	* TNM Observations
+	
+Implementers **SHOULD** use the [mCode Disease characterization]({{site.data.fhir.ver.mcodeIg}}/group-disease.html) and [mCode Treatment guidance]({{site.data.fhir.ver.mcodeIg}}/group-treatment.html) when using the above profiles.
 
-* Client System Actors SHALL obtain the access token as defined in the [Bulk Data Access IG](http://hl7.org/fhir/uv/bulkdata/export/index.html) specification.
+##### Subscriptions Backport IG Usage
 
-* For the cancer use cases, EHRs SHALL support the system/*.read scopes. The Healthcare organization processes along with the EHRs authorization server SHALL verify consent and other policy requirements before allowing the Backend Service App to access the data to be included in the cancer report. 
+This IG leverages the [Subscriptions Backport IG]({{site.data.fhir.ver.subscriptionsIg}}/index.html) defined by HL7 Infrastructure WG for automating reporting workflows using subscriptions.
+
+##### Bulk Data Access IG Usage
+
+This IG leverages the [BulkData Access IG]({{site.data.fhir.ver.buldataIg}}/index.html) defined by HL7 Infrastructure WG for enabling authentication and authorization between various actors involved in the workflows.
+
+
+#### Implementation Requirements
+
+##### SMART on FHIR Backend Services Authorization Requirements
+
+This section outlines how the SMART on FHIR Backend Services Authorization will be used by the Central Cancer Registry (CCR) Reporting Content implementation guide. 
+
+* The system actors namely EHRs, Backend Service App, Trusted Third Party and the Central Cancer Registry are required to use the SMART on FHIR Backend Services Authorization mechanisms as outlined below for the following interactions 
+
+
+    * Backend Service App accessing data from the EHR
+    * Backend Service App posting data to the Central Cancer Registry data store.
+    
+
+* System actors acting as servers (EHRs, Trusted Third Parties and Central Cancer Registry) **SHALL** advertise conformance to SMART Backend Services by hosting a Well-Known Uniform Resource Identifiers (URIs) as defined in the [Bulk Data Access IG Authorization Section]({{ site.data.fhir.ver.bulkIg }}/authorization/index.html#advertising-server-conformance-with-smart-backend-services) specification.
+
+* System actors acting as servers **SHALL** include token_endpoint, scopes_supported, token_endpoint_auth_methods_supported and token_endpoint_auth_signing_alg_values_supported as defined in the [Bulk Data Access IG Authorization Section]({{ site.data.fhir.ver.bulkIg }}/authorization/index.html) specification.
+
+* When System actors act as clients (Backend Service App), they **SHALL** share their JSON Web Key Set (JWKS) with the server System actors (EHRs, Trusted Third Party and Central Cancer Registry) using Uniform Resource Locators (URLs) as defined in the [Bulk Data Access IG Authorization Section]({{ site.data.fhir.ver.bulkIg }}/authorization/index.html#registering-a-smart-backend-service-communicating-public-keys) specification.
+
+* System actors acting as clients **SHALL** obtain the access token as defined in the [Bulk Data Access IG Authorization Section]({{ site.data.fhir.ver.bulkIg }}/authorization/index.html#obtaining-an-access-token) specification.
+
+* For the Central Cancer Registry Reporting use cases, EHRs **SHALL** support the system/*.read scopes. 
+
+* The Central Cancer Registry **SHALL** support the system/*.read and system/*.write scopes. 
+
+* The healthcare organization's existing processes along with the EHRs authorization server **SHALL** verify consent and other policy requirements before allowing the Backend Service App to access the data to be included in the central cancer registry report. 
  
 
-### Knowledge Artifact Requirements 
+##### Knowledge Artifact and Knowledge Artifact Repository Requirements 
 
-This section describes the requirements of the cancer reporting Knowledge Artifact to implement the outlined use cases.
+* Central Cancer Registry **SHALL** create a Knowledge Artifact following the constraints identified by the [MedMorph Provisioning requirements]({{site.data.fhir.ver.medmorphIg}}/provisioning.html#creating-knowledge-artifacts)
 
+* Central Cancer Registry **SHALL** publish the value sets required to trigger a cancer report for a patient with an encounter diagnosis of cancer. This can be published in the Central Cancer Registry FHIR Server or a separate Knowledge Artifact Repository.
 
+* Central Cancer Registry **SHALL** republish the value sets when the list of concepts comprising the value sets change. 
+
+* Central Cancer Registry **SHALL** create the Knowledge Artifact following the constraints identified in [ccrr-plandefinition](StructureDefinition-ccrr-plandefinition.html).
+
+* The Central Cancer Registry **SHALL** implement the Knowledge Artifact Repository requirements as outlined in the [MedMorph RA Knowledge Artifact Repository Requirements]({{site.data.fhir.ver.medmorphIg}}/CapabilityStatement-medmorph-knowledge-artifact-repository.html).
+
+##### EHR Requirements
+
+* The EHR **SHALL** support the requirements as outlined in the [EHR Capability Statement](CapabilityStatement-central-cancer-registry-reporting-ehr.html).
+
+###### Authorization requirements 
+
+* EHRs **SHALL** support the [SMART on FHIR Backend Services Authorization](spec.html#smart-on-fhir-backend-services-authorization-requirements) outlined above as a Server. 
  
 
-### EHR Requirements 
+###### Subscription requirements
+
+* EHRs **SHALL** support the creation of Subscriptions for the [encounter-close Subscription Topic]({{site.data.fhir.ver.medmorphIg}}/StructureDefinition-encounter-close.html)
+
+* EHRs **SHALL** support [``rest-hook``]({{site.data.fhir.path}}subscription.html#2.46.7.1) Subscription channel to notify the Backend Service App.
+
+* EHRs **SHALL** support Notification Bundles with [``full resource payload``]({{site.data.fhir.ver.subscriptionsIg}}/payloads.html#full-resource) as outlined in the Backport Subscriptions IG. 
+
+* For the Central Cancer Registry Reporting Ig, EHRs **SHALL** include the Encounter resource which was closed as part of the Notification Bundle.
+
+* EHRs **SHALL** support operations and APIs for Subscription, Notification Bundle, Subscription status resources as outlined in the [EHR Capability Statement](CapabilityStatement-central-cancer-registry-reporting-ehr.html).
 
 
+###### Data API requirements
+
+* EHRs **SHALL** support the APIs as outlined in the [EHR Capability Statement](CapabilityStatement-central-cancer-registry-reporting-ehr.html) for the Backend Service App to access patient data.
+
+ 
+##### BSA Requirements 
 
 
-### Cancer Registry Requirements 
+###### Authorization requirements
+
+* BSA **SHALL** support the [SMART on FHIR Backend Services Authorization](spec.html#smart-on-fhir-backend-services-authorization-requirements) outlined above as a client. 
 
 
+###### Subscription requirements
 
+* BSA **SHALL** create Subscriptions for the [encounter-close Subscription Topic]({{site.data.fhir.ver.medmorphIg}}/StructureDefinition-encounter-close.html).
+
+* BSA **SHALL** support [``rest-hook``]({{site.data.fhir.path}}subscription.html#2.46.7.1) Subscription channel to receive notifications from the EHR.
+
+
+###### Subscription Notification API 
+
+* BSA **SHALL** support a POST API <BSA Base URL>/receive-notification with a payload of the Subscription Notification Bundle to receive the notifications from the EHR. 
+
+
+###### Knowledge Artifact processing requirements 
+
+* The BSA **SHALL** allow the healthcare organization to activate/deactivate a specific Knowledge Artifact. Activation indicates applying the Knowledge Artifact and deactivation indicates not applying the Knowledge Artifact for events occurring within the healthcare organization.
+
+* BSA **SHALL** process the MedMorph Central Cancer Registry Reporting Knowledge Artifact and create Subscription resources in the EHR for each trigger event.
+
+* For the Central Cancer Registry Reporting Ig, the BSA **SHALL** create the Subscription for the [encounter-close Subscription Topic]({{site.data.fhir.ver.medmorphIg}}/StructureDefinition-encounter-close.html) trigger event. 
+
+* Upon deactivation of a Knowledge Artifact, The BSA **SHALL** delete the Subscriptions previously created by the BSA for the Knowledge Artifact. (for e.g delete the Subscription created for encounter-close trigger event) 
+
+* The BSA **SHALL** implement FhirPath expression processing to process the MedMoprh Central Cancer Registry Reporting Knowledge Artifact actions.
+
+* The BSA **SHALL** use the default queries outlined by the MedMoprh Central Cancer Registry Reporting Knowledge Artifact unless overridden by the healthcare organization.
+
+* The BSA **SHALL** ensure no duplicate reports are submitted for the same patient and encounter occurring within a healthcare organization.
+
+
+###### Data API requirements 
+
+* The BSA acting as a client **SHALL** use the APIs as outlined in the [EHR Capability Statement](CapabilityStatement-central-cancer-registry-reporting-ehr.html) to access patient data from the EHR
+
+
+###### Report generation requirements 
+
+* The BSA **SHALL** create a central cancer registry report following the constraints identified in [Central Cancer Registry Content Bundle](StructureDefinition-ccrr-content-bundle.html).
+
+* The BSA **SHALL** package the central cancer registry report following the constraints identified in [Central Cancer Registry Reporting Bundle](StructureDefinition-ccrr-reporting-bundle.html).
+
+* The BSA **SHALL** submit the message containing the central cancer registry report to the endpoint identified in the MedMorph Central Cancer Registry Reporting Knowledge Artifact unless overridden by the healthcare organization.
+
+###### MedMorph RA Requirements 
+
+* The BSA **SHALL** implement the MedMorph BSA requirements as outlined in the [MedMorph RA BSA requirements]({{site.data.fhir.ver.medmorphIg}}//CapabilityStatement-medmorph-backend-service-app.html).
+
+##### Central Cancer Registry Requirements 
+
+
+###### Message Receiving and Processing requirements
+
+* The Central Cancer Registry Data Store **SHALL** implement the $process-message operation on the ROOT URL of the FHIR Server to receive reports from the Backend Service App using the POST operation.
+
+* Upon receipt of the message, the Central Cancer Registry Data Store **SHALL** validate the message before accepting the message.
+
+* When there are validation failures, the Central Cancer Registry Data Store **SHALL** return a Operation Outcome response with the details of the validations as part of the POST response.
+
+* The Central Cancer Registry **SHALL** implement the PHA requirements as outlined in the [MedMorph PHA requirements]({{site.data.fhir.ver.medmorphIg}}/CapabilityStatement-medmorph-public-health-authority.html).
+
+##### Trusted Third Party Requirements
+
+
+###### Message Receiving and Processing requirements
+
+* Trusted Third Parties **SHALL** implement the $process-message operation on the ROOT URL of the FHIR Server to receive reports from the Backend Service App using the POST operation.
+
+* Upon receipt of the message, the Trusted Third Parties **MAY** validate the message before accepting the message.
+
+* When the message is validated and there are validation failures, Trusted Third Parties **SHALL** return a Operation Outcome response with the details of the validations as part of the POST response.
+
+* Once a message is accepted by a Trusted Third Party without errors, the Trusted Third Party will have to route the message to the Central Cancer Registry.
+
+* The TTP **SHALL** implement the Trusted Third Party requirements as outlined in the [MedMorph RA TTP requirements]({{site.data.fhir.ver.medmorphIg}}/CapabilityStatement-medmorph-trusted-third-party.html).
 

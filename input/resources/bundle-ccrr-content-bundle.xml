@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="ccrr-content-bundle"/>
+    <meta>
+        <versionId value="3"/>
+        <lastUpdated value="2021-08-13T05:43:12.456+00:00"/>
+        <source value="#op9qv8RqccCL7zOB"/>
+    </meta>
+    <url value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/ccrr-content-bundle"/>
+    <version value="0.1.0"/>
+    <name value="CentralCancerRegistryReportingContentBundle"/>
+    <title value="Central Cancer Registry Report Content Bundle"/>
+    <status value="draft"/>
+    <experimental value="false"/>
+    <date value="2019-09-01"/>
+    <publisher value="HL7 International - Public Health Work Group"/>
+    <contact>
+        <telecom>
+            <system value="url"/>
+            <value value="http://hl7.org/Special/committees/pher"/>
+        </telecom>
+    </contact>
+    <description value="Bundle Resource profile for exchanging a Cancer Report to a Central Cancer Registry."/>
+    <jurisdiction>
+        <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="US"/>
+        </coding>
+    </jurisdiction>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Bundle"/>
+    <baseDefinition value="http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-content-bundle"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Bundle.entry">
+            <path value="Bundle.entry"/>
+            <slicing>
+                <discriminator>
+                    <type value="profile"/>
+                    <path value="$this.resource"/>
+                </discriminator>
+                <rules value="open"/>
+            </slicing>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:patient">
+            <path value="Bundle.entry"/>
+            <sliceName value="patient"/>
+            <min value="1"/>
+            <max value="1"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:patient.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/cancer-patient"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:encounter">
+            <path value="Bundle.entry"/>
+            <sliceName value="encounter"/>
+            <min value="1"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:encounter.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/us-ph-encounter"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:primaryCancerCondition">
+            <path value="Bundle.entry"/>
+            <sliceName value="primaryCancerCondition"/>
+            <min value="1"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:primaryCancerCondition.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-primary-cancer-condition"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:secondaryCancerCondition">
+            <path value="Bundle.entry"/>
+            <sliceName value="secondaryCancerCondition"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:secondaryCancerCondition.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-secondary-cancer-condition"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:cancerStageGroup">
+            <path value="Bundle.entry"/>
+            <sliceName value="cancerStageGroup"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:cancerStageGroup.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-stage-group"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:radioTherapyCourseSummary">
+            <path value="Bundle.entry"/>
+            <sliceName value="radioTherapyCourseSummary"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:radioTherapyCourseSummary.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-radiotherapy-course-summary"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:problemList">
+            <path value="Bundle.entry"/>
+            <sliceName value="problemList"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:problemList.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:cancerRelatedMedicationRequests">
+            <path value="Bundle.entry"/>
+            <sliceName value="cancerRelatedMedicationRequests"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:cancerRelatedMedicationRequests.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-request"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:cancerRelatedMedicationAdministrations">
+            <path value="Bundle.entry"/>
+            <sliceName value="cancerRelatedMedicationAdministrations"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:cancerRelatedMedicationAdministrations.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-related-medication-administration"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:medicationReferences">
+            <path value="Bundle.entry"/>
+            <sliceName value="medicationReferences"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:medicationReferences.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:odhUsualWork">
+            <path value="Bundle.entry"/>
+            <sliceName value="odhUsualWork"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:labresults.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/odh/StructureDefinition/odh-UsualWork"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:labresults">
+            <path value="Bundle.entry"/>
+            <sliceName value="labresults"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:labresults.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:vitals">
+            <path value="Bundle.entry"/>
+            <sliceName value="vitals"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:vitals.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/StructureDefinition/vitalsigns"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:procedures">
+            <path value="Bundle.entry"/>
+            <sliceName value="procedures"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:procedures.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:diagnosticReportLabs">
+            <path value="Bundle.entry"/>
+            <sliceName value="diagnosticReportLabs"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:diagnosticReportLabs.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:diagnosticReportNotes">
+            <path value="Bundle.entry"/>
+            <sliceName value="diagnosticReportNotes"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:diagnosticReportNotes.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:documentReferenceNotes">
+            <path value="Bundle.entry"/>
+            <sliceName value="documentReferenceNotes"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:documentReferenceNotes.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:smokingStatus">
+            <path value="Bundle.entry"/>
+            <sliceName value="smokingStatus"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:smokingStatus.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-smokingstatus"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:practitioners">
+            <path value="Bundle.entry"/>
+            <sliceName value="practitioners"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:practitioners.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"/>
+            </type>
+        </element>
+        <element id="Bundle.entry:organizations">
+            <path value="Bundle.entry"/>
+            <sliceName value="organizations"/>
+            <min value="0"/>
+            <max value="*"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Bundle.entry:organizations.resource">
+            <path value="Bundle.entry.resource"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"/>
+            </type>
+        </element>
+    </differential>
+</StructureDefinition>

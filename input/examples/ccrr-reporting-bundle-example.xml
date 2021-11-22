@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="reporting-bundle-example"/> 
+  <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2020-11-29T02:03:28.045+00:00"/>
+        <profile value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/ccrr-reporting-bundle"/>
+  </meta>
+  <type value="message"/> 
+  <timestamp value="2020-11-20T11:15:33-10:00"/> 
+
+  <entry>
+    <fullUrl value="MessageHeader/messageheader-example-reportheader"/>
+    <resource>
+      <MessageHeader xmlns="http://hl7.org/fhir">
+        <id value="messageheader-example-reportheader"/> 
+        <meta>
+              <versionId value="1"/>
+              <lastUpdated value="2020-11-29T02:03:28.045+00:00"/>
+              <profile value="http://hl7.org/fhir/us/medmorph/StructureDefinition/us-ph-messageheader"/>
+        </meta>
+        <text> 
+          <status value="generated"/> 
+          <div xmlns="http://www.w3.org/1999/xhtml">
+            <p>Reporting Data</p> 
+          </div> 
+        </text> 
+        <extension url="http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-dataEncrypted">
+                      <valueBoolean value="false"/>
+        </extension>
+        <extension url="http://hl7.org/fhir/us/medmorph/StructureDefinition/ext-messageProcessingCategory">
+                      <valueCode value="consequence"/>
+        </extension>
+        <eventCoding> 
+          <system value="http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-messageheader-message-types"/> 
+          <code value="cancer-report-message"/> 
+        </eventCoding> 
+        <destination> 
+          <name value="PHA endpoint"/> 
+          <endpoint value="http://example.pha.org/fhir"/> 
+        </destination> 
+        <sender> 
+          <reference value="Organization/example-healthcare-org"/> 
+        </sender> 
+        <source> 
+          <name value="Healthcare Organization"/> 
+          <software value="Backend Service App"/> 
+          <version value="3.1.45.AABB"/> 
+          <contact> 
+            <system value="phone"/> 
+            <value value="+1 (917) 123 4567"/> 
+          </contact> 
+          <endpoint value="http://example.healthcare.org/fhir"/> 
+        </source> 
+        <reason> 
+          <coding> 
+            <system value="http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-triggerdefinition-namedevents"/> 
+            <code value="encounter-close"/> 
+          </coding> 
+        </reason> 
+        <focus>
+          <reference value="Bundle/content-bundle-example"/>
+        </focus>
+      </MessageHeader>
+    </resource>
+  </entry>
+
+  <entry>
+    <fullUrl value="Bundle/content-bundle-example"/>
+    <resource>
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="content-bundle-example"/> 
+  <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2020-11-29T02:03:28.045+00:00"/>
+        <profile value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/ccrr-content-bundle"/>
+  </meta>
+  <type value="collection"/> 
+  <timestamp value="2020-11-20T11:15:33-10:00"/> 
+  <entry> 
+   <fullUrl value="Patient/patient-eve-everywoman"/>
+    <resource> 
+      
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="patient-eve-everywoman"/>
+  <meta>
+    <versionId value="10"/>
+    <lastUpdated value="2021-08-17T08:00:32.356+00:00"/>
+    <source value="#zjFlzHDvZIYVyMAB"/>
+    <profile
+             value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/us-ph-patient"/>
+    <profile
+             value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/cancer-patient"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+            <div class="hapiHeaderText">Eve L 
+                <b>EVERYWOMAN </b>
+            </div>
+            <table class="hapiPropertyTable">
+                <tbody>
+                    <tr>
+                        <td>Identifier</td>
+                        <td>1032702</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>
+                            <span>5101 Peachtree St NE </span>
+                            <br/>
+                            <span>Atlanta </span>
+                            <span>GA </span>
+                            <span>US </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date of birth</td>
+                        <td>
+                            <span>24 November 1974</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </text>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2106-3"/>
+        <display value="White"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="White"/>
+    </extension>
+  </extension>
+  <extension
+             url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238"/>
+        <code value="2186-5"/>
+        <display value="Not Hispanic or Latino"/>
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Not Hispanic or Latino"/>
+    </extension>
+  </extension>
+  <extension
+             url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex">
+    <valueCode value="F"/>
+  </extension>
+  <extension
+             url="http://hl7.org/fhir/StructureDefinition/patient-genderIdentity">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://hl7.org/fhir/gender-identity"/>
+        <code value="female"/>
+        <display value="female"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension
+             url="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/us-ph-tribal-affiliation-extension">
+    <extension url="TribeName">
+      <valueCoding>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-TribalEntityUS"/>
+        <code value="91"/>
+        <display value="Fort Mojave Indian Tribe of Arizona, California"/>
+      </valueCoding>
+    </extension>
+    <extension url="EnrolledTribeMember">
+      <valueBoolean value="true"/>
+    </extension>
+  </extension>
+  <identifier>
+    <use value="usual"/>
+    <type>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+        <code value="MR"/>
+        <display value="Medical Record Number"/>
+      </coding>
+    </type>
+    <system value="http://hospital.smarthealthit.org"/>
+    <value value="1032702"/>
+  </identifier>
+  <active value="true"/>
+  <name>
+    <family value="Everywoman"/>
+    <given value="Eve"/>
+    <given value="L"/>
+  </name>
+  <telecom>
+    <system value="phone"/>
+    <value value="1-(404)555-1212"/>
+    <use value="home"/>
+  </telecom>
+  <telecom>
+    <system value="email"/>
+    <value value="eve.everywoman@example.com"/>
+  </telecom>
+  <gender value="female"/>
+  <birthDate value="1974-11-24"/>
+  <address>
+    <line value="5101 Peachtree St NE"/>
+    <city value="Atlanta"/>
+    <state value="GA"/>
+    <postalCode value="30302"/>
+    <country value="US"/>
+  </address>
+</Patient> 
+    </resource> 
+  </entry>
+  <entry>
+    <fullUrl value="Encounter/encounter-eve-everywoman-external-encounter"/>
+    <resource>     
+      
+<Encounter xmlns="http://hl7.org/fhir">
+  <id value="encounter-eve-everywoman-external-encounter"/>
+  <meta>
+    <versionId value="4"/>
+    <lastUpdated value="2021-07-19T03:02:05.801+00:00"/>
+    <source value="#YUwy5zH7WyiblJ5p"/>
+    <profile
+             value="http://hl7.org/fhir/us/central-cancer-registry-reporting/StructureDefinition/us-ph-encounter"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Encounter Example</b></p></div>
+  </text>
+  <identifier>
+    <system value="http://hospital.smarthealthit.org"/>
+    <value value="9937012"/>
+  </identifier>
+  <status value="finished"/>
+  <class>
+    <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+    <code value="AMB"/>
+    <display value="ambulatory"/>
+  </class>
+  <type>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="308335008"/>
+      <display value="Patient encounter procedure"/>
+    </coding>
+  </type>
+  <subject>
+    <reference value="Patient/patient-eve-everywoman"/>
+    <display value="Eve Everywoman"/>
+  </subject>
+</Encounter>
+    </resource>
+  </entry>
+
+  <entry>
+    <fullUrl value="Condition/primary-cancer-condition-breast"/>
+    <resource>
+      <Condition xmlns="http://hl7.org/fhir">
+  <id value="primary-cancer-condition-breast"/>
+  <meta>
+    <profile
+             value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-primary-cancer-condition"/>
+  </meta>
+  <text>
+    <status value="extensions"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>Histology-Morphology-Behavior</b>: <span title="Codes: {http://snomed.info/sct 77284006}">Lobular carcinoma in situ (morphologic abnormality)</span></p><p><b>clinicalStatus</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-clinical active}">Active</span></p><p><b>verificationStatus</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}">Confirmed</span></p><p><b>category</b>: <span title="Codes: {http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}">Problem List Item</span></p><p><b>code</b>: <span title="Codes: {http://snomed.info/sct 363346000}">Malignant neoplastic disease (disorder)</span></p><p><b>bodySite</b>: <span title="Codes: {http://snomed.info/sct 80248007}">Left breast structure (body structure)</span></p><p><b>subject</b>: <a>Generated Summary: Medical Record Number: m456 (USUAL); Eve A. Anyperson ; gender: female;</a></p><p><b>onset</b>: 2019-04-01</p><p><b>asserter</b>: <a>Generated Summary: id: 9988776655; Kyle Anydoc ; gender: male</a></p><h3>Stages</h3><table class="grid"><tr><td>-</td><td><b>Summary</b></td><td><b>Assessment</b></td></tr><tr><td>*</td><td><span title="Codes: {http://cancerstaging.org 3C}">IIIC</span></td><td><a>Generated Summary: <span title="Codes: {http://loinc.org 21908-9}">Stage group.clinical Cancer</span>; effective: 2019-04-01; <span title="Codes: {http://cancerstaging.org 3C}">IIIC</span>; <span title="Codes: {http://snomed.info/sct 897275008}">American Joint Commission on Cancer, Cancer Staging Manual, 8th edition neoplasm staging system (tumor staging)</span></a></td></tr></table></div>
+  </text>
+  <extension
+             url="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-histology-morphology-behavior">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="77284006"/>
+        <display value="Lobular carcinoma in situ (morphologic abnormality)"/>
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <clinicalStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"/>
+      <code value="active"/>
+      <display value="Active"/>
+    </coding>
+  </clinicalStatus>
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="confirmed"/>
+      <display value="Confirmed"/>
+    </coding>
+  </verificationStatus>
+  <category>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+      <code value="problem-list-item"/>
+    </coding>
+  </category>
+  <code>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="363346000"/>
+      <display value="Malignant neoplastic disease (disorder)"/>
+    </coding>
+  </code>
+  <bodySite>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="80248007"/>
+      <display value="Left breast structure (body structure)"/>
+    </coding>
+  </bodySite>
+  <subject>
+    <reference value="Patient/patient-eve-everywoman"/>
+  </subject>
+  <onsetDateTime value="2019-04-01"/>
+  <asserter>
+    <reference value="Practitioner/us-core-practitioner-kyle-anydoc"/>
+  </asserter>
+</Condition>
+    </resource>
+  </entry>
+
+  <entry>
+    <fullUrl value="Practitioner/us-core-practitioner-kyle-anydoc"/>
+    <resource>
+      <Practitioner xmlns="http://hl7.org/fhir">
+  <id value="us-core-practitioner-kyle-anydoc"/>
+  <meta>
+    <profile
+             value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 9988776655</p><p><b>name</b>: Kyle Anydoc </p><p><b>address</b>: 567 Healthcare Drive Anytown MA 12345 US (HOME)</p><p><b>gender</b>: male</p><h3>Qualifications</h3><table class="grid"><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td><span title="Codes: {http://terminology.hl7.org/CodeSystem/v2-0360 MD}">Doctor of Medicine</span></td></tr></table></div>
+  </text>
+  <identifier>
+    <system value="http://hl7.org/fhir/sid/us-npi"/>
+    <value value="9988776655"/>
+  </identifier>
+  <name>
+    <family value="Anydoc"/>
+    <given value="Kyle"/>
+    <prefix value="Dr."/>
+  </name>
+  <address>
+    <use value="home"/>
+    <line value="567 Healthcare Drive"/>
+    <city value="Anytown"/>
+    <state value="MA"/>
+    <postalCode value="12345"/>
+    <country value="US"/>
+  </address>
+  <gender value="male"/>
+  <qualification>
+    <code>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/v2-0360"/>
+        <version value="2.7"/>
+        <code value="MD"/>
+        <display value="Doctor of Medicine"/>
+      </coding>
+    </code>
+  </qualification>
+</Practitioner>
+    </resource>
+  </entry>
+</Bundle>
+          
+    </resource>
+  </entry>
+
+
+</Bundle>
