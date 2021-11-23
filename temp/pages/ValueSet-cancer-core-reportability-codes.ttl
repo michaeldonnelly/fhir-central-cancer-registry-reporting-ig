@@ -1,0 +1,119 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.org/fhir/us/central-cancer-registry-reporting/ValueSet/cancer-core-reportability-codes> a fhir:ValueSet;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "cancer-core-reportability-codes"];
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This value set includes codes based on the following rules:</p><ul><li>Include these codes as defined in <a href=\"http://www.snomed.org/\"><code>http://snomed.info/sct</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td><a href=\"http://snomed.info/id/281566005\">281566005</a></td><td>Abdominothoracic neuroblastoma</td></tr><tr><td><a href=\"http://snomed.info/id/403901001\">403901001</a></td><td>Acantholytic squamous cell carcinoma (disorder)</td></tr><tr><td><a href=\"http://snomed.info/id/254654004\">254654004</a></td><td>SCC - Acantholytic squamous cell carcinoma of skin</td></tr><tr><td><a href=\"http://snomed.info/id/413389003\">413389003</a></td><td>Accelerated phase chronic myeloid leukemia (disorder)</td></tr><tr><td><a href=\"http://snomed.info/id/783771003\">783771003</a></td><td>Pancreatic acinar cell carcinoma</td></tr><tr><td><a href=\"http://snomed.info/id/822969007\">822969007</a></td><td>Acinar cell cystadenocarcinoma of lung</td></tr><tr><td><a href=\"http://snomed.info/id/822970008\">822970008</a></td><td>Acinar cell cystadenocarcinoma of prostate</td></tr><tr><td><a href=\"http://snomed.info/id/126949007\">126949007</a></td><td>Acoustic neuroma</td></tr><tr><td><a href=\"http://snomed.info/id/2961000119106\">2961000119106</a></td><td>Acoustic neuroma of bilateral vestibular nerves (disorder)</td></tr><tr><td><a href=\"http://snomed.info/id/16594881000119101\">16594881000119101</a></td><td>Acoustic neuroma of left vestibular nerve (disorder)</td></tr></table></li><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/2.1.0/CodeSystem-icd10CM.html\"><code>http://hl7.org/fhir/sid/icd-10-cm</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>C00</td><td>Malignant neoplasm of lip</td></tr><tr><td>C00.0</td><td>Malignant neoplasm of external upper lip</td></tr><tr><td>C00.1</td><td>Malignant neoplasm of external lower lip</td></tr><tr><td>C00.2</td><td>Malignant neoplasm of external lip, unspecified</td></tr><tr><td>C00.3</td><td>Malignant neoplasm of upper lip, inner aspect</td></tr><tr><td>C00.4</td><td>Malignant neoplasm of lower lip, inner aspect</td></tr><tr><td>C00.5</td><td>Malignant neoplasm of lip, unspecified, inner aspect</td></tr><tr><td>C00.6</td><td>Malignant neoplasm of commissure of lip, unspecified</td></tr><tr><td>C00.8</td><td>Malignant neoplasm of overlapping sites of lip</td></tr><tr><td>C00.9</td><td>Malignant neoplasm of lip, unspecified</td></tr></table></li></ul></div>"
+  ];
+  fhir:ValueSet.url [ fhir:value "http://hl7.org/fhir/us/central-cancer-registry-reporting/ValueSet/cancer-core-reportability-codes"];
+  fhir:ValueSet.version [ fhir:value "0.1.0"];
+  fhir:ValueSet.name [ fhir:value "CancerCoreReportabilityCodes"];
+  fhir:ValueSet.title [ fhir:value "Cancer Core Reportability Codes"];
+  fhir:ValueSet.status [ fhir:value "active"];
+  fhir:ValueSet.date [ fhir:value "2021-11-22"^^xsd:date];
+  fhir:ValueSet.publisher [ fhir:value "HL7 International - Public Health Work Group"];
+  fhir:ValueSet.contact [
+     fhir:index 0;
+     fhir:ContactDetail.telecom [
+       fhir:index 0;
+       fhir:ContactPoint.system [ fhir:value "url" ];
+       fhir:ContactPoint.value [ fhir:value "http://hl7.org/Special/committees/pher" ]
+     ]
+  ];
+  fhir:ValueSet.description [ fhir:value "SNOMED-CT, ICD-10, ICD-9 codes Cancer Core Reportability determination. These are just sample codes and the actual value set will be    published by the Central Cancer Registry."];
+  fhir:ValueSet.jurisdiction [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ];
+       fhir:Coding.code [ fhir:value "US" ]
+     ]
+  ];
+  fhir:ValueSet.copyright [ fhir:value "This value set includes content from:\n  1. SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement.\n  2. ICD-9 and ICD-10 are copyrighted by the World Health Organization (WHO) which owns and publishes the classification. See https://www.who.int/classifications/icd/en. WHO has authorized the development of an adaptation of ICD-9 and ICD-10 to ICD-9-CM to ICD-10-CM for use in the United States for U.S. government purposes.\n"];
+  fhir:ValueSet.compose [
+     fhir:ValueSet.compose.include [
+       fhir:index 0;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:ValueSet.compose.include.concept [
+         fhir:index 0;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "281566005" ]
+       ], [
+         fhir:index 1;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "403901001" ]
+       ], [
+         fhir:index 2;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "254654004" ]
+       ], [
+         fhir:index 3;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "413389003" ]
+       ], [
+         fhir:index 4;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "783771003" ]
+       ], [
+         fhir:index 5;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "822969007" ]
+       ], [
+         fhir:index 6;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "822970008" ]
+       ], [
+         fhir:index 7;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "126949007" ]
+       ], [
+         fhir:index 8;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "2961000119106" ]
+       ], [
+         fhir:index 9;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "16594881000119101" ]
+       ]
+     ], [
+       fhir:index 1;
+       fhir:ValueSet.compose.include.system [ fhir:value "http://hl7.org/fhir/sid/icd-10-cm" ];
+       fhir:ValueSet.compose.include.concept [
+         fhir:index 0;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00" ]
+       ], [
+         fhir:index 1;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.0" ]
+       ], [
+         fhir:index 2;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.1" ]
+       ], [
+         fhir:index 3;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.2" ]
+       ], [
+         fhir:index 4;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.3" ]
+       ], [
+         fhir:index 5;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.4" ]
+       ], [
+         fhir:index 6;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.5" ]
+       ], [
+         fhir:index 7;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.6" ]
+       ], [
+         fhir:index 8;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.8" ]
+       ], [
+         fhir:index 9;
+         fhir:ValueSet.compose.include.concept.code [ fhir:value "C00.9" ]
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.org/fhir/us/central-cancer-registry-reporting/ValueSet/cancer-core-reportability-codes.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl;
+  owl:versionIRI <http://build.fhir.org/us/central-cancer-registry-reporting/ValueSet/cancer-core-reportability-codes.ttl> .
+
+# -------------------------------------------------------------------------------------
+

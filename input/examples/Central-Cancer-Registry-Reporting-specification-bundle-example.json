@@ -79,7 +79,7 @@
           {
             "type": "depends-on",
             "label": "Central Cancer Registry Trigger Codes",
-            "resource": "http://hl7.org/fhir/us/medmorph/CodeSystem/us-ph-plandefinition-actions"
+            "resource": "http://hl7.org/fhir/us/central-cancer-registry-reporting/ValueSet/cancer-core-reportability-codes"
           }
         ],
         "action": [

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="cancer-core-reportability-codes"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p>This value set includes codes based on the following rules:</p><ul><li>Include these codes as defined in <a href="http://www.snomed.org/"><code>http://snomed.info/sct</code></a><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td></tr><tr><td><a href="http://snomed.info/id/281566005">281566005</a></td><td>Abdominothoracic neuroblastoma</td></tr><tr><td><a href="http://snomed.info/id/403901001">403901001</a></td><td>Acantholytic squamous cell carcinoma (disorder)</td></tr><tr><td><a href="http://snomed.info/id/254654004">254654004</a></td><td>SCC - Acantholytic squamous cell carcinoma of skin</td></tr><tr><td><a href="http://snomed.info/id/413389003">413389003</a></td><td>Accelerated phase chronic myeloid leukemia (disorder)</td></tr><tr><td><a href="http://snomed.info/id/783771003">783771003</a></td><td>Pancreatic acinar cell carcinoma</td></tr><tr><td><a href="http://snomed.info/id/822969007">822969007</a></td><td>Acinar cell cystadenocarcinoma of lung</td></tr><tr><td><a href="http://snomed.info/id/822970008">822970008</a></td><td>Acinar cell cystadenocarcinoma of prostate</td></tr><tr><td><a href="http://snomed.info/id/126949007">126949007</a></td><td>Acoustic neuroma</td></tr><tr><td><a href="http://snomed.info/id/2961000119106">2961000119106</a></td><td>Acoustic neuroma of bilateral vestibular nerves (disorder)</td></tr><tr><td><a href="http://snomed.info/id/16594881000119101">16594881000119101</a></td><td>Acoustic neuroma of left vestibular nerve (disorder)</td></tr></table></li><li>Include these codes as defined in <a href="http://terminology.hl7.org/2.1.0/CodeSystem-icd10CM.html"><code>http://hl7.org/fhir/sid/icd-10-cm</code></a><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td></tr><tr><td>C00</td><td>Malignant neoplasm of lip</td></tr><tr><td>C00.0</td><td>Malignant neoplasm of external upper lip</td></tr><tr><td>C00.1</td><td>Malignant neoplasm of external lower lip</td></tr><tr><td>C00.2</td><td>Malignant neoplasm of external lip, unspecified</td></tr><tr><td>C00.3</td><td>Malignant neoplasm of upper lip, inner aspect</td></tr><tr><td>C00.4</td><td>Malignant neoplasm of lower lip, inner aspect</td></tr><tr><td>C00.5</td><td>Malignant neoplasm of lip, unspecified, inner aspect</td></tr><tr><td>C00.6</td><td>Malignant neoplasm of commissure of lip, unspecified</td></tr><tr><td>C00.8</td><td>Malignant neoplasm of overlapping sites of lip</td></tr><tr><td>C00.9</td><td>Malignant neoplasm of lip, unspecified</td></tr></table></li></ul></div>
+  </text>
+  <url value="http://hl7.org/fhir/us/central-cancer-registry-reporting/ValueSet/cancer-core-reportability-codes"/>
+  <version value="0.1.0"/>
+  <name value="CancerCoreReportabilityCodes"/>
+  <title value="Cancer Core Reportability Codes"/>
+  <status value="active"/>
+  <date value="2021-11-22"/>
+  <publisher value="HL7 International - Public Health Work Group"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/Special/committees/pher"/>
+    </telecom>
+  </contact>
+  <description value="SNOMED-CT, ICD-10, ICD-9 codes Cancer Core Reportability determination. These are just sample codes and the actual value set will be    published by the Central Cancer Registry."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="US"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="This value set includes content from:&#xA;  1. SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement.&#xA;  2. ICD-9 and ICD-10 are copyrighted by the World Health Organization (WHO) which owns and publishes the classification. See https://www.who.int/classifications/icd/en. WHO has authorized the development of an adaptation of ICD-9 and ICD-10 to ICD-9-CM to ICD-10-CM for use in the United States for U.S. government purposes.&#xA;"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="281566005"/>
+      </concept>
+      <concept>
+        <code value="403901001"/>
+      </concept>
+      <concept>
+        <code value="254654004"/>
+      </concept>
+      <concept>
+        <code value="413389003"/>
+      </concept>
+      <concept>
+        <code value="783771003"/>
+      </concept>
+      <concept>
+        <code value="822969007"/>
+      </concept>
+      <concept>
+        <code value="822970008"/>
+      </concept>
+      <concept>
+        <code value="126949007"/>
+      </concept>
+      <concept>
+        <code value="2961000119106"/>
+      </concept>
+      <concept>
+        <code value="16594881000119101"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://hl7.org/fhir/sid/icd-10-cm"/>
+      <concept>
+        <code value="C00"/>
+      </concept>
+      <concept>
+        <code value="C00.0"/>
+      </concept>
+      <concept>
+        <code value="C00.1"/>
+      </concept>
+      <concept>
+        <code value="C00.2"/>
+      </concept>
+      <concept>
+        <code value="C00.3"/>
+      </concept>
+      <concept>
+        <code value="C00.4"/>
+      </concept>
+      <concept>
+        <code value="C00.5"/>
+      </concept>
+      <concept>
+        <code value="C00.6"/>
+      </concept>
+      <concept>
+        <code value="C00.8"/>
+      </concept>
+      <concept>
+        <code value="C00.9"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

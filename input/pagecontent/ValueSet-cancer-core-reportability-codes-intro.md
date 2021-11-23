@@ -1,0 +1,4 @@
+### Introduction
+
+This ValueSet is used as a RelatedArtifact within the Central Cancer Registry Knowledge Artifact.
+These are just example codes and the Central Cancer Registry will publish this value set for usage by the healthcare organizations implmenting the use case.
