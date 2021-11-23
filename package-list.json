@@ -18,7 +18,7 @@
   "version" : "0.1.0",  
   "date" : "2022-01-01", 
   "desc" : "STU 1 Ballot (Jan 2022 Ballot)",   
-  "path" : "http://hl7.org/fhir/us/central-cancer-registry-reporting/2021Jan",  
+  "path" : "http://hl7.org/fhir/us/central-cancer-registry-reporting/2022Jan",  
   "status" : "ballot",   
   "sequence" : "STU 1",
   "fhirversion" : "4.0.1"
