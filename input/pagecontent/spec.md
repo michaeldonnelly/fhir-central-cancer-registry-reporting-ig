@@ -38,7 +38,7 @@ The full set of profiles defined in this implementation guide can be found by fo
 
 ##### MedMorph Reference Architecture (RA) IG Usage
 
-This IG leverages the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/index.html) defined by HL7 Infrastructure Public Health WG as the reference architecture for automation and implementing the health care surveys use case.
+This IG leverages the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/index.html) defined by HL7 Public Health WG as the reference architecture for automation and implementing the central cancer registry reporting use case.
 
 ##### US Core Usage
 

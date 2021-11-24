@@ -68,10 +68,10 @@ The following is a diagram of the workflow based on the above user story used fo
 
 #### MedMorph Central Cancer Registry Reporting Actors and Definitions
 
-The following actors and definitions from the MedMorph RA IG are used by the Central Cancer Registry Reporting use cases. 
+The following actors and definitions from the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/usecases.html#medmorph-actors-and-definitions) are used by the Central Cancer Registry Reporting use cases. 
 
 * EHR 
-* Backend Service App
+* Backend Service App (BSA)
 * Central Cancer Registry (PHA)
-* KAR ? 
-* TTP ? 
+* Knowledge Artifact Repository (KAR)
+* Trusted Third Party (TTP)
