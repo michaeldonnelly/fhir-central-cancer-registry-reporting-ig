@@ -8,9 +8,9 @@ The purpose of the use case is to transmit cancer case information to state Cent
 Cancer is a mandatory reportable disease; every state has public health law/regulation requiring information to be reported to a central cancer registry about all cancers diagnosed or treated within that state. Central cancer registries are population-based cancer registries that collect data on all cancer cases in a defined population.  The main sources of information include information from treatment facilities (e.g., hospitals, clinics/physician offices), diagnostic services (e.g., pathology laboratories) and vital statistics (e.g., death certificates). Central cancer registries have an emphasis on epidemiology and public health to determine patterns among various populations, monitor cancer trends over time, guide planning and evaluation of cancer control efforts, help prioritize health resource allocations and to advance clinical, epidemiologic and health services research.[1]  Even with reporting requirements, cancer surveillance is complex given the heterogeneous nature of the disease, numerous diagnostic and prognostic factors, and multiple medical encounters that produce data from a variety of non-harmonized data sources.
 
 Challenges include:
-* Issues with data flow (Need to identify more specifics)
-* Delays in data availability (Need to identify existing timeliness and impact of delays)
-* A lack of standardized systems for cancer data collection and reporting (in some cases) --- What about existing CDA approaches ? 
+* Issues with data flow 
+* Delays in data availability 
+* A lack of standardized systems for cancer data collection and reporting (in some cases)
 
 
 These challenges make it difficult for registries to synthesize information in a timely and actionable way.
@@ -66,7 +66,7 @@ The following is a diagram of the workflow based on the above user story used fo
 <br/>
 
 
-#### MedMorph Central Cancer Registry Reporting Actors and Definitions
+#### Central Cancer Registry Reporting Actors and Definitions
 
 The following actors and definitions from the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/usecases.html#medmorph-actors-and-definitions) are used by the Central Cancer Registry Reporting use cases. 
 

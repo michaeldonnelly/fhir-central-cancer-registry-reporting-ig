@@ -130,7 +130,7 @@
                 <profile value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-radiotherapy-course-summary"/>
             </type>
         </element>
-        <element id="Bundle.entry:problemList">
+    <!--    <element id="Bundle.entry:problemList">
             <path value="Bundle.entry"/>
             <sliceName value="problemList"/>
             <min value="0"/>
@@ -143,7 +143,7 @@
                 <code value="Resource"/>
                 <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition"/>
             </type>
-        </element>
+        </element> -->
         <element id="Bundle.entry:cancerRelatedMedicationRequests">
             <path value="Bundle.entry"/>
             <sliceName value="cancerRelatedMedicationRequests"/>

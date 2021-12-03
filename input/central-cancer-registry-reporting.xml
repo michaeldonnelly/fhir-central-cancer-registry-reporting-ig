@@ -17,7 +17,7 @@
       <value value="http://hl7.org/Special/committees/pher"/>
     </telecom>
   </contact>
-  <description value="The MedMorph Central Cancer Registry Reporting Content IG provides healthcare organizations the necessary data exchange mechanisms to report cancer data to public health agencies."/>
+  <description value="The Central Cancer Registry Reporting Content IG provides healthcare organizations the necessary data exchange mechanisms to report cancer data to public health agencies."/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
@@ -89,16 +89,16 @@
       <reference>
         <reference value="Organization/example-pha-org"/>
       </reference>
-      <name value="Organization - Example"/>
-      <description value="An example showing an Organization"/>
+      <name value="PHA Organization - Example"/>
+      <description value="An example showing a PHA Organization"/>
       <exampleBoolean value="true"/>
    </resource>
    <resource>
       <reference>
         <reference value="Organization/example-healthcare-org"/>
       </reference>
-      <name value="Organization - Example"/>
-      <description value="An example showing an Organization"/>
+      <name value="Healthcare Organization - Example"/>
+      <description value="An example showing a Health Care Organization"/>
       <exampleBoolean value="true"/>
    </resource>
    <resource>
@@ -137,16 +137,16 @@
       <reference>
         <reference value="Endpoint/example-ph-endpoint"/>
       </reference>
-      <name value="Endpoint - Example"/>
-      <description value="An example showing an Endpoint"/>
+      <name value="PHA Endpoint - Example"/>
+      <description value="An example showing an PHA Endpoint"/>
       <exampleBoolean value="true"/>
    </resource>
    <resource>
       <reference>
         <reference value="Endpoint/example-healthcare-endpoint"/>
       </reference>
-      <name value="Endpoint - Example"/>
-      <description value="An example showing an Endpoint"/>
+      <name value="Healthcare Organization Endpoint - Example"/>
+      <description value="An example showing an Healthcare Organization Endpoint"/>
       <exampleBoolean value="true"/>
    </resource>
   
@@ -157,7 +157,7 @@
       <generation value="html"/>
       <page>
         <nameUrl value="index.html"/>
-        <title value="MedMorph Central Cancer Registry Reporting Content IG Home"/>
+        <title value="Central Cancer Registry Reporting Content IG Home"/>
         <generation value="html"/>
       </page>
       <page>
