@@ -21,7 +21,7 @@
             <value value="http://hl7.org/Special/committees/pher"/>
         </telecom>
     </contact>
-    <description value="Bundle Resource profile for exchanging a cancer report with the Central Cancer Registry."/>
+    <description value="Bundle Resource profile for exchanging a cancer report with the Central Cancer Registry. This bundle contains the MessageHeader resource used for routing and the Content Bundle specifying the content."/>
     <jurisdiction>
         <coding>
             <system value="urn:iso:std:iso:3166"/>

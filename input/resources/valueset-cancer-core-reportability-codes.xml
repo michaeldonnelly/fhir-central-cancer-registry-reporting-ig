@@ -14,7 +14,7 @@
 			<value value="http://hl7.org/fhir"/>
 		</telecom>
 	</contact>
-	<description value="SNOMED-CT, ICD-10, ICD-9 codes Cancer Core Reportability determination. These are just sample codes and the actual value set will be 
+	<description value="The valueset contains SNOMED-CT and ICD-10-CM codes for Cancer Core Reportability determination. These are just sample codes and the actual value set will be 
 		published by the Central Cancer Registry."/>
 	<copyright value="This value set includes content from:&#xA;
 

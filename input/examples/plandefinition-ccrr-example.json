@@ -196,7 +196,7 @@
                     "kind" : "applicability",
                     "expression" : {
                       "language" : "text/fhirpath",
-                      "expression" : "%patient.deceased[x] == null"
+                      "expression" : "%patient.deceased[x] == null && (currentTime - previousReportSubmissionTime) < 7776000"
                     }
                   }
                 ],

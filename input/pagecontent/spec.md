@@ -15,7 +15,7 @@ This implementation guide uses specific terminology to flag statements that have
 
 * **SHOULD** indicates behaviors that are strongly recommended (and which may result in interoperability issues or sub-optimal behavior if not adhered to), but which do not, for this version of the specification, affect the determination of specification conformance.
 
-* **MAY** describes optional behaviors that are free to consider but where the is no recommendation for or against adoption.
+* **MAY** describes optional behaviors that are free to consider but where there is no recommendation for or against adoption.
 
 
 #### Claiming Conformance 
@@ -24,44 +24,55 @@ Actors and Systems asserting conformance to this implementation guide have to im
 
 ##### MUST SUPPORT Definition
 
-* Systems SHALL be capable of populating data elements as specified by the profiles and data elements are returned using the specified APIs in the capability statement.
-* Systems SHALL be capable of processing resource instances containing the MUST SUPPORT data elements without generating an error or causing the application to fail. In other words, Systems SHOULD be capable of displaying the data elements for human use or storing it for other purposes.
-* In situations where information on a particular data element is not present and the reason for absence is unknown, Systems SHALL NOT include the data elements in the resource instance returned from executing the API requests.
-* When accessing MedMorph Research Content IG data, Systems SHALL interpret missing data elements within resource instances returned from API requests as data not present.
+* Systems **SHALL** be capable of populating data elements as specified by the profiles and data elements are returned using the specified APIs in the capability statement.
+* Systems **SHALL** be capable of processing resource instances containing the MUST SUPPORT data elements without generating an error or causing the application to fail. In other words, Systems SHOULD be capable of displaying the data elements for human use or storing it for other purposes.
+* In situations where information on a particular data element is not present and the reason for absence is unknown, Systems **SHALL NOT** include the data elements in the resource instance returned from executing the API requests.
+* When accessing Central Cancer Registry Reporting data, Systems **SHALL** interpret missing data elements within resource instances returned from API requests as data not present.
 
 
 #### Profiles and Other IGs Usage
 This specification makes significant use of [FHIR profiles]({{site.data.fhir.path}}profiling.html), search parameter definitions, and terminology artifacts to describe the content to be shared as part of MedMorph Central Cancer Registry Reporting Content IG workflows. The implementation guide is based on [FHIR R4]({{site.data.fhir.path}}) and profiles are listed for each interaction.
 
-The full set of profiles defined in this implementation guide can be found by following the links on the MedMorph [FHIR Artifacts](artifacts.html) page.
+The full set of profiles defined in this implementation guide can be found by following the links on the [FHIR Artifacts](artifacts.html) page.
 
 
 ##### MedMorph Reference Architecture (RA) IG Usage
 
-This IG leverages the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/index.html) defined by HL7 Public Health WG as the reference architecture for automation and implementing the central cancer registry reporting use case.
+This IG leverages the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/index.html) defined by HL7 Public Health WG as the reference architecture for automating and implementing the central cancer registry reporting use case.
 
 ##### US Core Usage
 
 This IG leverages the [US Core]({{ site.data.fhir.ver.uscoreR4 }}) set of profiles defined by HL7 for sharing non-veterinary EMR individual health data in the U.S.  Where US Core profiles exist, this IG either leverages them directly or uses them as a base for any additional constraints needed to support the research use cases.  If no constraints are needed, this IG does not define any profiles.
 
 
-
 ##### US Public Health (US PH) library profiles Usage
 
-This IG leverages the [US PH library profiles](https://github.com/HL7/fhir-us-ph-common-library-ig) defined by HL7 Public Health WG for sharing public health reporting data. 
+This IG leverages the [US PH library profiles](https://github.com/HL7/fhir-us-ph-common-library-ig) defined by HL7 Public Health WG for sharing public health reporting data which includes the following profiles:
+
+	* USPublicHealthEncounter
+	* USPublicHealthPatient
+
 
 ##### mCode FHIR IG Usage
 
-This IG leverages the [mCode FHIR IG]({{site.data.fhir.ver.mcodeIg}}/index.html) for exchanging cancer specific information which includes the following 
+This IG leverages the [mCode FHIR IG]({{site.data.fhir.ver.mcodeIg}}/index.html) for exchanging cancer specific information which includes the following profiles
 
 	* Primary Cancer Condition
 	* Secondary Cancer Condition
 	* Cancer Stage Group Information 
 	* Cancer Related MedicationRequests 
 	* Cancer Related MedicationAdministration
-	* TNM Observations
+	* TNM Observations 
+	* RadiotherapyCourseSummary
 	
 Implementers **SHOULD** use the [mCode Disease characterization]({{site.data.fhir.ver.mcodeIg}}/group-disease.html) and [mCode Treatment guidance]({{site.data.fhir.ver.mcodeIg}}/group-treatment.html) when using the above profiles.
+
+
+##### Occupational Data for Health (ODH) IG Usage
+
+This IG leverages the ODH FHIR IG for exchanging occupational data for health which includes the following profile
+
+	* UsualWork
 
 ##### Subscriptions Backport IG Usage
 
@@ -165,13 +176,13 @@ This section outlines how the SMART on FHIR Backend Services Authorization will 
 
 * BSA **SHALL** process the MedMorph Central Cancer Registry Reporting Knowledge Artifact and create Subscription resources in the EHR for each trigger event.
 
-* For the Central Cancer Registry Reporting Ig, the BSA **SHALL** create the Subscription for the [encounter-close Subscription Topic]({{site.data.fhir.ver.medmorphIg}}/StructureDefinition-encounter-close.html) trigger event. 
+* For the Central Cancer Registry Reporting IG, the BSA **SHALL** create the Subscription for the [encounter-close Subscription Topic]({{site.data.fhir.ver.medmorphIg}}/StructureDefinition-encounter-close.html) trigger event. 
 
-* Upon deactivation of a Knowledge Artifact, The BSA **SHALL** delete the Subscriptions previously created by the BSA for the Knowledge Artifact. (for e.g delete the Subscription created for encounter-close trigger event) 
+* Upon deactivation of a Knowledge Artifact, The BSA **SHALL** delete the Subscriptions previously created by the BSA for the Knowledge Artifact. (e.g delete the Subscription created for encounter-close trigger event) 
 
-* The BSA **SHALL** implement FhirPath expression processing to process the MedMoprh Central Cancer Registry Reporting Knowledge Artifact actions.
+* The BSA **SHALL** implement FhirPath expression processing to process the Central Cancer Registry Reporting Knowledge Artifact actions.
 
-* The BSA **SHALL** use the default queries outlined by the MedMoprh Central Cancer Registry Reporting Knowledge Artifact unless overridden by the healthcare organization.
+* The BSA **SHALL** use the default queries outlined by the Central Cancer Registry Reporting Knowledge Artifact unless overridden by the healthcare organization.
 
 * The BSA **SHALL** ensure no duplicate reports are submitted for the same patient and encounter occurring within a healthcare organization.
 
@@ -202,7 +213,7 @@ This section outlines how the SMART on FHIR Backend Services Authorization will 
 
 * Upon receipt of the message, the Central Cancer Registry Data Store **SHALL** validate the message before accepting the message.
 
-* When there are validation failures, the Central Cancer Registry Data Store **SHALL** return a Operation Outcome response with the details of the validations as part of the POST response.
+* When there are validation failures, the Central Cancer Registry Data Store **SHALL** return an Operation Outcome response with the details of the validations as part of the POST response.
 
 * The Central Cancer Registry **SHALL** implement the PHA requirements as outlined in the [MedMorph PHA requirements]({{site.data.fhir.ver.medmorphIg}}/CapabilityStatement-medmorph-public-health-authority.html).
 
@@ -215,7 +226,7 @@ This section outlines how the SMART on FHIR Backend Services Authorization will 
 
 * Upon receipt of the message, the Trusted Third Parties **MAY** validate the message before accepting the message.
 
-* When the message is validated and there are validation failures, Trusted Third Parties **SHALL** return a Operation Outcome response with the details of the validations as part of the POST response.
+* When the message is validated and there are validation failures, Trusted Third Parties **SHALL** return an Operation Outcome response with the details of the validations as part of the POST response.
 
 * Once a message is accepted by a Trusted Third Party without errors, the Trusted Third Party will have to route the message to the Central Cancer Registry.
 
