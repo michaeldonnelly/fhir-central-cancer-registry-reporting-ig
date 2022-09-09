@@ -6,7 +6,7 @@
     The Making Electronic Data More Available for Research and Public Health (MedMorph) project seeks to advance public health and patient-centered outcomes by 
 		using emerging health data and exchange standards, such as Health Level 7 (HL7<sup>®</sup>) Fast Healthcare Interoperability Resources (FHIR<sup>®</sup>)
 		and Clinical Quality Language (CQL), to develop and implement an interoperable solution enabling access to clinical data. More information
-		about the MedMorph project can be found on the MedMorph Reference Architecture (RA) Implementation Guide (IG) homepage (INSERT LINK).
+		about the MedMorph project can be found on the [MedMorph Reference Architecture (RA) Implementation Guide (IG)]({{site.data.fhir.ver.medmorphIg}}/index.html).
     </p>
     <p>
     The MedMorph Central Cancer Registry Reporting Content IG specifies how the MedMorph RA IG is leveraged to
