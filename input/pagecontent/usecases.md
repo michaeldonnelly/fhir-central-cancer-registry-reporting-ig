@@ -93,11 +93,35 @@ The following is a diagram of the workflow based on the above user story used fo
 
 The following actors and definitions from the [MedMorph RA IG]({{site.data.fhir.ver.medmorphIg}}/usecases.html#medmorph-actors-and-definitions) are used by the Central Cancer Registry Reporting use cases. 
 
-* EHR (Data Source)
+* Data Source (e.g., EHR, HIE)
 * Health Data Exchange App (HDEA) (MedMorph's backend services app)
 * Central Cancer Registry (Data Receiver)
 * Knowledge Artifact Repository (KAR)
 * Trusted Third Party (TTP)
+
+##### Interactions between MedMorph RA Actors and Systems for Central Cancer Registry Reporting 
+This section outlines the high-level interactions between the various MedMorph Actors and Systems listed above. These interactions are shown in Figure 2.2 below along with the descriptions for each step.
+
+{% include img.html img="cancer-actors-and-systems.png" caption="Figure 2.2 - Central Cancer Registry Reporting Actors and Systems" %}
+
+The descriptions for each step in the above diagram include:
+* Step 1: A Central Cancer Registry (e.g., Data Receiver ) creates a Knowledge Artifact and makes it available via the Knowledge Artifact Repository.
+     * Step 1a: Knowledge Artifact Repositories which implement notifications, can optionally notify the subscribers (EHRs, Backend System App, Administrators) of changes in the Knowledge Artifacts. 
+* Step 2: The Health Data Exchange App (HDEA) queries the Knowledge Artifact Repository to retrieve a Knowledge Artifact. 
+     * Step 2a: HDEA receives the Knowledge Artifact as a response to the query in Step 2.     
+* Step 3: The HDEA processes the Knowledge Artifact and creates subscriptions in the Data Source’s (e.g., EHR) FHIR Server so that it can be notified when specific events occur in clinical workflows.
+* Step 4: Providers as part of their clinical workflows update the data in the Data Source’s patient chart.
+* Step 5: The Data Source notifies the HDEA based on subscriptions that have been created in Step 3.
+* Step 6: The HDEA queries the Data Source for patient’s data.
+     * Step 6a: HDEA receives the response from the Data Source with the patient’s data.
+* Step 7: A Central Cancer Registry requires a Trusted Third Party (TTP) to act as an intermediary to receive reports from clinical organizations. The HDEA submits the created report to the TTP.
+     * Step 7a: The TTP receives a submitted report from the HDEA and forwards the report to the Central Cancer Registry.
+* Step 8: A Central Cancer Registry requires a TTP to act as an intermediary to submit reports to clinical organizations and submits a response back to the TTP based on the submitted report. The Response transaction can be synchronous or asynchronous (after a period of time).
+     * Step 8a: The TTP receives the submitted response from the Central Cancer Registry and forwards the response to the HDEA which is part of the healthcare organization.
+* Step 9: The HDEA writes back the response from the Central Cancer Registry to the Data Source as appropriate. Note: The Response may have to be re-identified in some scenarios using Trust Services before it is written back to the EHR.
+ 
+- - - -
+
 
 
 <sup>1</sup>  Menck, H., Gress, D. and Griffin, A., 2011. Cancer Registry Management Principles and Practices for Hospitals and Central Registries. 3rd ed. Dubuque, IA: Kendall Hunt.  ISBN: 978-0-7575-6900-5.
