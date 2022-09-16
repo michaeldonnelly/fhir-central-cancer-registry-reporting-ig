@@ -80,7 +80,7 @@ After 12 months from the initial diagnosis and transmission of a cancer report t
 The following is a diagram of the workflow based on the above user story used for Central Cancer Registry Reporting
 
 
-{% include img.html img="central-cancer-registry-reporting-workflow.png" caption="Figure 2.1 - Central Cancer Registry Reporting Workflow" %}
+{% include img.html img="central-cancer-registry-reporting-workflow2.png" caption="Figure 2.1 - Central Cancer Registry Reporting Workflow" %}
 
 <br/>
 
@@ -104,7 +104,7 @@ This section outlines the high-level interactions between the various MedMorph A
 {% include img.html img="cancer-actors-and-systems.png" caption="Figure 2.2 - Central Cancer Registry Reporting Actors and Systems" %}
 
 The descriptions for each step in the above diagram include:
-* Step 1: A Central Cancer Registry (e.g., Data Receiver ) creates a Knowledge Artifact and makes it available via the Knowledge Artifact Repository.
+* Step 1: The Central Cancer Registry (e.g., Data Receiver ) creates a Knowledge Artifact and makes it available via the Knowledge Artifact Repository.
      * Step 1a: Knowledge Artifact Repositories which implement notifications, can optionally notify the subscribers (EHRs, Backend System App, Administrators) of changes in the Knowledge Artifacts. 
 * Step 2: The Health Data Exchange App (HDEA) queries the Knowledge Artifact Repository to retrieve a Knowledge Artifact. 
      * Step 2a: HDEA receives the Knowledge Artifact as a response to the query in Step 2.     
@@ -113,10 +113,10 @@ The descriptions for each step in the above diagram include:
 * Step 5: The Data Source notifies the HDEA based on subscriptions that have been created in Step 3.
 * Step 6: The HDEA queries the Data Source for patient’s data.
      * Step 6a: HDEA receives the response from the Data Source with the patient’s data.
-* Step 7: The HDEA submits the created report to the TTP. (Central Cancer Registries require Trusted Third Parties (TTPs) to act as intermediaries to receive reports from clinical organizations.) 
+* Step 7: The HDEA submits the created report to the Trusted Third Party (TTP). (Central Cancer Registries require TTPs to act as intermediaries to receive reports from clinical organizations.) 
      * Step 7a: The TTP receives a submitted report from the HDEA and forwards the report to the Central Cancer Registry.
-* Step 8: A Central Cancer Registry requires a TTP to act as an intermediary to submit reports to clinical organizations and submits a response back to the TTP based on the submitted report. The Response transaction can be synchronous or asynchronous (after a period of time).
-     * Step 8a: The TTP receives the submitted response from the Central Cancer Registry and forwards the response to the HDEA which is part of the healthcare organization.
+* Step 8: The Central Cancer Registry submits a response back to the TTP based on the submitted report. The Response transaction can be synchronous or asynchronous (after a period of time).
+     * Step 8a: The TTP receives the submitted response from the Central Cancer Registry and forwards the response to the HDEA which is part of the healthcare organization. The Response transaction can be synchronous or asynchronous (after a period of time). The Response transaction can be synchronous or asynchronous (after a period of time).
 * Step 9: The HDEA writes back the response from the Central Cancer Registry to the Data Source as appropriate. Note: The Response may have to be re-identified in some scenarios using Trust Services before it is written back to the EHR.
  
 - - - -
