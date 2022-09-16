@@ -80,7 +80,7 @@ After 12 months from the initial diagnosis and transmission of a cancer report t
 The following is a diagram of the workflow based on the above user story used for Central Cancer Registry Reporting
 
 
-{% include img.html img="central-cancer-registry-reporting-workflow2.png" caption="Figure 2.1 - Central Cancer Registry Reporting Workflow" %}
+{% include img.html img="central-cancer-registry-reporting-workflow-v2.png" caption="Figure 2.1 - Central Cancer Registry Reporting Workflow" %}
 
 <br/>
 
