@@ -40,7 +40,7 @@
    <dependsOn id="bulkIg">
     <uri value="http://hl7.org/fhir/uv/bulkdata/ImplementationGuide/hl7.fhir.uv.bulkdata"/>
     <packageId value="hl7.fhir.uv.bulkdata"/>
-    <version value="1.0.0"/>
+    <version value="1.0.1"/>
   </dependsOn>
   
   <dependsOn id="medmorphIg">
