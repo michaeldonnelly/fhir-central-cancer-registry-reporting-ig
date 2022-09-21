@@ -81,7 +81,7 @@ This IG leverages the [Subscriptions Backport IG]({{site.data.fhir.ver.subscript
 
 ##### Bulk Data Access IG Usage
 
-This IG leverages the [BulkData Access IG]({{site.data.fhir.ver.buldataIg}}/index.html) defined by HL7 Infrastructure WG for enabling authentication and authorization between various actors involved in the workflows. The Bulk Data Access IG is being referenced to use the SMART on FHIR Backend Services Authorization requirements only. The Bulk Data operations related to exporting data for a cohort (Group) or a patient or system level export is not used for this IG.
+This IG leverages the [FHIR Bulk Data Access IG v1.0.1](http://hl7.org/fhir/uv/bulkdata/STU1.0.1/index.html) defined by HL7 Infrastructure WG for enabling authentication and authorization between various actors involved in the workflows. The Bulk Data Access IG is being referenced to use the SMART on FHIR Backend Services Authorization requirements only. The Bulk Data operations related to exporting data for a cohort (Group) or a patient or system level export is not used for this IG.
 
 
 #### Implementation Requirements
@@ -95,13 +95,13 @@ This section outlines how the SMART on FHIR Backend Services Authorization (from
     * HDEA accessing data from the EHR.
     * HDEA posting data to the Central Cancer Registry data store.
     
-* The system actor acting as a server (e.g., EHR, Trusted Third Party, and Central Cancer Registry) **SHALL** advertise conformance to SMART Backend Services by hosting a Well-Known Uniform Resource Identifiers (URIs) as defined in the [Bulk Data Access IG Authorization Section]({{site.data.fhir.ver.bulkIg}}/authorization/index.html#advertising-server-conformance-with-smart-backend-services) specification.
+* The system actor acting as a server (e.g., EHR, Trusted Third Party, and Central Cancer Registry) **SHALL** advertise conformance to SMART Backend Services by hosting a Well-Known Uniform Resource Identifiers (URIs) as defined in the [Bulk Data Access IG Authorization Section](http://hl7.org/fhir/uv/bulkdata/STU1.0.1/authorization/index.html#advertising-server-conformance-with-smart-backend-services) specification.
 
-* The system actor acting as a server **SHALL** include token_endpoint, scopes_supported, token_endpoint_auth_methods_supported and token_endpoint_auth_signing_alg_values_supported as defined in the [Bulk Data Access IG Authorization Section]({{site.data.fhir.ver.bulkIg}}/authorization/index.html) specification.
+* The system actor acting as a server **SHALL** include token_endpoint, scopes_supported, token_endpoint_auth_methods_supported and token_endpoint_auth_signing_alg_values_supported as defined in the [Bulk Data Access IG Authorization Section](http://hl7.org/fhir/uv/bulkdata/STU1.0.1/authorization/index.html) specification.
 
-* When a system actor act as a client (HDEA), they **SHALL** share their JSON Web Key Set (JWKS) with the server System actors (EHRs, Trusted Third Party and Central Cancer Registry) using Uniform Resource Locators (URLs) as defined in the [Bulk Data Access IG Authorization Section]({{site.data.fhir.ver.bulkIg}}/authorization/index.html#registering-a-smart-backend-service-communicating-public-keys) specification.
+* When a system actor act as a client (HDEA), they **SHALL** share their JSON Web Key Set (JWKS) with the server System actors (EHRs, Trusted Third Party and Central Cancer Registry) using Uniform Resource Locators (URLs) as defined in the [Bulk Data Access IG Authorization Section](http://hl7.org/fhir/uv/bulkdata/STU1.0.1/authorization/index.html#registering-a-smart-backend-service-communicating-public-keys) specification.
 
-* The system actor acting as a client **SHALL** obtain the access token as defined in the [Bulk Data Access IG Authorization Section]({{site.data.fhir.ver.bulkIg}}/authorization/index.html#obtaining-an-access-token) specification.
+* The system actor acting as a client **SHALL** obtain the access token as defined in the [Bulk Data Access IG Authorization Section](http://hl7.org/fhir/uv/bulkdata/STU1.0.1/authorization/index.html#obtaining-an-access-token) specification.
 
 * For the Central Cancer Registry Reporting use cases, EHRs **SHALL** support the system/*.read scopes. 
 
